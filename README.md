@@ -1,35 +1,34 @@
-# ??? Opération Nexus Virtualis  
-### **Virtualisation avancée & Hyperviseurs Type 1 en environnement imbriqué**
+# Opération Nexus Virtualis  
+## ?? Virtualisation avancée & Hyperviseurs Type 1 en environnement imbriqué
 
-> « La virtualisation est une technologie qui permet de créer des versions virtuelles de ressources physiques telles que des serveurs, des systèmes de stockage ou des réseaux. »
+> « La virtualisation permet de créer des versions virtuelles de ressources physiques telles que des serveurs, du stockage ou des réseaux. »
 
-Ce projet a pour objectif d’explorer, installer et comparer **quatre hyperviseurs de type 1** (ESXi, Hyper-V, Proxmox VE, XCP-ng) au sein d’un environnement de virtualisation imbriquée basé sur **VMware Workstation Pro**.
-
-Il constitue un **laboratoire complet**, documenté étape par étape, permettant d’apprendre les fondamentaux de la virtualisation professionnelle.
+Ce projet explore quatre hyperviseurs de type 1 (ESXi, Hyper-V, Proxmox VE, XCP-ng) exécutés en virtualisation imbriquée via VMware Workstation Pro.  
+Il constitue un laboratoire complet pour comprendre la virtualisation professionnelle.
 
 ---
 
 ## ?? Sommaire
 
-- ?? Objectifs du projet
-- ?? Architecture globale
-- ??? Hyperviseurs étudiés
-- ?? Préparation de l’environnement
-- ?? Réseau VMware Workstation
-- ?? Téléchargement des ISOs
-- ??? Installation des hyperviseurs
-- ?? VM Debian embarquée
-- ?? Ressources & Références
+- ?? Objectifs du projet  
+- ?? Architecture globale  
+- ??? Hyperviseurs étudiés  
+- ?? Préparation de l’environnement  
+- ?? Réseau VMware Workstation  
+- ?? Téléchargement des ISOs  
+- ??? Installation des hyperviseurs  
+- ?? VM Debian embarquée  
+- ?? Ressources & Références  
 
 ---
 
 ## ?? Objectifs du projet
 
-- Comprendre les **concepts fondamentaux** des hyperviseurs Type 1.  
-- Installer et configurer **ESXi, Hyper-V, Proxmox VE et XCP-ng**.  
-- Utiliser **VMware Workstation Pro** comme hyperviseur de type 2 pour exécuter des hyperviseurs de type 1 (nested virtualization).  
-- Déployer une **VM Debian** sur chaque hyperviseur pour valider leur fonctionnement.  
-- Manipuler les réseaux NAT, Host-Only et Bridged.
+- Comprendre les concepts fondamentaux des hyperviseurs Type 1  
+- Installer et configurer ESXi, Hyper-V, Proxmox VE et XCP-ng  
+- Utiliser VMware Workstation Pro pour exécuter des hyperviseurs Type 1 (nested virtualization)  
+- Déployer une VM Debian sur chaque hyperviseur  
+- Manipuler les réseaux NAT, Host-Only et Bridged  
 
 ---
 
@@ -57,7 +56,7 @@ PC Hôte (Windows / Linux)
 |------------|------|---------|-------|
 | VMware ESXi 8.0 | Type 1 | Free/Commercial | Référence datacenter |
 | Microsoft Hyper-V | Type 1 | Inclus Windows Server | Intégration AD/Windows |
-| Proxmox VE 8.x | Type 1 | Open Source | KVM + LXC, très pédagogique |
+| Proxmox VE 8.x | Type 1 | Open Source | KVM + LXC |
 | XCP-ng 8.3 | Type 1 | Open Source | Basé sur XenServer |
 
 ---
@@ -66,10 +65,10 @@ PC Hôte (Windows / Linux)
 
 ### Activation de la virtualisation imbriquée
 
-- Activer **Intel VT-x / AMD-V** dans le BIOS/UEFI.
+- Activer Intel VT-x / AMD-V dans le BIOS/UEFI  
 - Dans VMware Workstation :  
-  - Activer **Virtualize Intel VT-x/EPT**  
-  - Activer **IOMMU** si disponible.
+  - Activer « Virtualize Intel VT-x/EPT »  
+  - Activer IOMMU si disponible  
 
 ---
 
@@ -94,20 +93,20 @@ PC Hôte (Windows / Linux)
 
 ## ??? Installation des hyperviseurs
 
-### ?? ESXi 8.0  
+### ESXi 8.0  
 - 12 Go RAM  
 - 40 Go disque  
 - 2 NIC (NAT + Host-Only)
 
-### ?? Hyper-V  
+### Hyper-V  
 - Windows Server 2022  
 - Secure Boot désactivé pour Debian  
 
-### ?? Proxmox VE  
+### Proxmox VE  
 - 8 Go RAM  
 - 60 Go disque  
 
-### ?? XCP-ng  
+### XCP-ng  
 - 8 Go RAM  
 - 60 Go disque  
 
@@ -128,5 +127,4 @@ PC Hôte (Windows / Linux)
 ## ?? Ressources & Références
 
 - Documentation officielle VMware, Microsoft, Proxmox, XCP-ng  
-- Extraits du document *Opération Nexus Virtualis*  
-
+- Extraits du document « Opération Nexus Virtualis »  
