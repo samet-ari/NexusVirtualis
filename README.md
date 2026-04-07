@@ -27,78 +27,91 @@ Il constitue un **laboratoire complet**, documenté étape par étape, permettan
 
 - Comprendre les **concepts fondamentaux** des hyperviseurs Type 1.  
 - Installer et configurer **ESXi, Hyper-V, Proxmox VE et XCP-ng**.  
-- Utiliser **VMware Workstation Pro** comme hyperviseur de type 2 (nested virtualization).  
-- Déployer une **VM Debian** sur chaque hyperviseur.  
+- Utiliser **VMware Workstation Pro** comme hyperviseur de type 2 pour exécuter des hyperviseurs de type 1 (nested virtualization).  
+- Déployer une **VM Debian** sur chaque hyperviseur pour valider leur fonctionnement.  
 - Manipuler les réseaux NAT, Host-Only et Bridged.
 
 ---
 
 ## :jigsaw: Architecture globale
 
-PC Hôte (Windows / Linux)
-│
-└── VMware Workstation Pro (Type 2)
-      ├── VM ESXi 8.0
-      │     └── VM Debian
-      ├── VM Hyper-V (Windows Server 2022)
-      │     └── VM Debian
-      ├── VM Proxmox VE
-      │     └── VM Debian
-      └── VM XCP-ng
-            └── VM Debian
-
 ---
 
 ## :desktop_computer: Hyperviseurs étudiés
 
-- VMware ESXi 8.0  
-- Microsoft Hyper-V  
-- Proxmox VE  
-- XCP-ng  
+| Hyperviseur | Type | Licence | Notes |
+|------------|------|---------|-------|
+| VMware ESXi 8.0 | Type 1 | Free/Commercial | Référence datacenter |
+| Microsoft Hyper-V | Type 1 | Inclus Windows Server | Intégration AD/Windows |
+| Proxmox VE 8.x | Type 1 | Open Source | KVM + LXC, très pédagogique |
+| XCP-ng 8.3 | Type 1 | Open Source | Basé sur XenServer |
 
 ---
 
 ## :gear: Préparation de l’environnement
 
-- Activation Intel VT-x / AMD-V  
-- Activation Virtualize VT-x/EPT dans VMware  
+### Activation de la virtualisation imbriquée
+
+- Activer **Intel VT-x / AMD-V** dans le BIOS/UEFI.
+- Dans VMware Workstation :  
+  - Activer **Virtualize Intel VT-x/EPT**  
+  - Activer **IOMMU** si disponible.
 
 ---
 
 ## :satellite: Réseau VMware Workstation
 
-- NAT  
-- Host-Only  
-- Bridged  
+| Mode | Internet | Accès hôte | Usage |
+|------|----------|------------|--------|
+| NAT | Oui | Non | Téléchargements, mises à jour |
+| Host-Only | Non | Oui | Réseau isolé |
+| Bridged | Oui | Oui | Cluster Proxmox (bonus) |
 
 ---
 
-## :cd: ISOs
+## :cd: Téléchargement des ISOs
 
-- ESXi  
+- ESXi 8.0 → Broadcom  
+- Windows Server 2022 → Microsoft Evaluation Center  
+- Proxmox VE → Téléchargement libre  
+- XCP-ng → Téléchargement libre  
+
+---
+
+## :hammer_and_wrench: Installation des hyperviseurs
+
+### ✔️ ESXi 8.0  
+- 12 Go RAM  
+- 40 Go disque  
+- 2 NIC (NAT + Host-Only)
+
+### ✔️ Hyper-V  
 - Windows Server 2022  
-- Proxmox VE  
-- XCP-ng  
+- Secure Boot désactivé pour Debian  
+
+### ✔️ Proxmox VE  
+- 8 Go RAM  
+- 60 Go disque  
+
+### ✔️ XCP-ng  
+- 8 Go RAM  
+- 60 Go disque  
 
 ---
 
-## :hammer_and_wrench: Installation
+## :penguin: VM Debian embarquée
 
-- ESXi  
-- Hyper-V  
-- Proxmox  
-- XCP-ng  
-
----
-
-## :penguin: VM Debian
-
-- 2 vCPU  
-- 1 Go RAM  
-- 8 Go disque  
+| Paramètre | Valeur |
+|----------|--------|
+| vCPU | 2 |
+| RAM | 1 Go |
+| Disque | 8 Go |
+| ISO | Debian netinst |
+| Secure Boot | Off |
 
 ---
 
-## :books: Ressources
+## :books: Ressources & Références
 
-- Documentation officielle des hyperviseurs  
+- Documentation officielle VMware, Microsoft, Proxmox, XCP-ng  
+- Extraits du document *Opération Nexus Virtualis*  
